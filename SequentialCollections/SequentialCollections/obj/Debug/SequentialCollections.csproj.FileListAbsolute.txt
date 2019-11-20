@@ -1,0 +1,6 @@
+C:\Users\User\Documents\codecool\NET_module\SI_assignments\SequentialCollections\SequentialCollections\bin\Debug\SequentialCollections.exe.config
+C:\Users\User\Documents\codecool\NET_module\SI_assignments\SequentialCollections\SequentialCollections\bin\Debug\SequentialCollections.exe
+C:\Users\User\Documents\codecool\NET_module\SI_assignments\SequentialCollections\SequentialCollections\bin\Debug\SequentialCollections.pdb
+C:\Users\User\Documents\codecool\NET_module\SI_assignments\SequentialCollections\SequentialCollections\obj\Debug\SequentialCollections.csprojAssemblyReference.cache
+C:\Users\User\Documents\codecool\NET_module\SI_assignments\SequentialCollections\SequentialCollections\obj\Debug\SequentialCollections.exe
+C:\Users\User\Documents\codecool\NET_module\SI_assignments\SequentialCollections\SequentialCollections\obj\Debug\SequentialCollections.pdb
