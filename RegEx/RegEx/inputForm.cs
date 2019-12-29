@@ -26,8 +26,7 @@ namespace RegEx
                 MessageBox.Show("The e-mail address is not valid.");
             }
 
-            MessageBox.Show(txtName.Text + txtPhone.Text + txtEmail.Text);
-
+            InputValidation.ReformatPhone(txtPhone.Text);
         }
     }
 }
