@@ -1,13 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Text.RegularExpressions;
 
-namespace RegEx
+namespace regular_expressions
 {
-    class InputValidation
+    public class InputChecker
     {
         public static bool IsValidName(string name)
         {

@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{E41D4AD6-D117-48ED-B7B8-77589526D2D8}</ProjectGuid>
+    <ProjectGuid>{34C6459C-BA29-4EAB-AC47-2ACE7CFA88CF}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>RegEx</RootNamespace>
-    <AssemblyName>RegEx</AssemblyName>
+    <RootNamespace>RegExNew</RootNamespace>
+    <AssemblyName>RegExNew</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -46,7 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="InputValidation.cs" />
+    <Compile Include="InputChecker.cs" />
     <Compile Include="InputForm.cs">
       <SubType>Form</SubType>
     </Compile>

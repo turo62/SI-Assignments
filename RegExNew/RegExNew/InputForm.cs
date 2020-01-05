@@ -1,6 +1,6 @@
 ﻿using System.Windows.Forms;
 
-namespace RegEx
+namespace regular_expressions
 {
     public partial class InputForm : Form
     {
@@ -11,22 +11,22 @@ namespace RegEx
 
         private void Button1_MouseClick(object sender, MouseEventArgs e)
         {
-            if(!InputValidation.IsValidName(txtName.Text))
-            { 
+            if (!InputChecker.IsValidName(txtName.Text))
+            {
                 MessageBox.Show("The name is invalid (only alphabetical characters are allowed)");
             }
 
-            if(!InputValidation.IsValidPhone(txtPhone.Text))
+            if (!InputChecker.IsValidPhone(txtPhone.Text))
             {
                 MessageBox.Show("The phone number is not a valid US phone number");
             }
 
-            if(!InputValidation.IsValidMail(txtEmail.Text))
+            if (!InputChecker.IsValidMail(txtEmail.Text))
             {
                 MessageBox.Show("The e-mail address is not valid.");
             }
 
-            InputValidation.ReformatPhone(txtPhone.Text);
+            InputChecker.ReformatPhone(txtPhone.Text);
         }
     }
 }
