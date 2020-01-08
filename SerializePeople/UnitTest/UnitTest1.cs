@@ -30,20 +30,20 @@ namespace UnitTest
         [TestMethod]
         public void TestSerializeMethod()
         {
-            testP1.Serialize(@"testSer.txt");
-            Assert.IsTrue(File.Exists(@"testSer.txt"));
+            testP1.Serialize(@"testSer.bin");
+            Assert.IsTrue(File.Exists(@"testSer.bin"));
 
-            File.Delete(@"testSer.txt");
+            File.Delete(@"testSer.bin");
         }
 
         [TestMethod]
         public void TestDeserializeMethod()
         {
-            testP1.Serialize(@"testSer2.txt");
-            Person deserializedP = Person.Deserialize(@"testSer.txt");
+            testP1.Serialize(@"testSer2.bin");
+            Person deserializedP = Person.Deserialize(@"testSer2.bin");
             Assert.IsTrue(deserializedP.Name == testP1.Name);
 
-            File.Delete(@"testSer2.txt");
+            File.Delete(@"testSer2.bin");
         }
     }
 }

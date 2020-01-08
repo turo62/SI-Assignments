@@ -9,15 +9,16 @@ namespace SerializePeople
 {
 
     [Serializable]
-    public class Person
+    public class Person : IDeserializationCallback
     {
         public string Name { get; set; }
 
-        public DateTime birthDay;
-
         public Genders Gender { get; }
 
+        [NonSerialized]
         public int age;
+
+        public DateTime birthDay;
 
         public DateTime BirthDay
         {
@@ -45,7 +46,7 @@ namespace SerializePeople
         public override string ToString()
         {
             string stringifyGender = Gender.ToString();
-            return "Name: " + Name      + ", gender: " + stringifyGender;
+            return "Name: " + Name      + ", birthday: " + BirthDay + ", gender: " + stringifyGender + ",age: " + age;
         }
 
         public void Serialize(string output)
@@ -71,6 +72,7 @@ namespace SerializePeople
             IFormatter formatter = new BinaryFormatter();
             Stream stream = new FileStream(input, FileMode.Open, FileAccess.Read);
             objnew = (Person)formatter.Deserialize(stream);
+            stream.Close();
 
             /*Console.WriteLine(objnew.Name);
             Console.WriteLine(objnew.BirthDay);
@@ -80,6 +82,11 @@ namespace SerializePeople
             Console.ReadKey();*/
 
             return objnew;  
+        }
+
+        void IDeserializationCallback.OnDeserialization(Object sender)
+        {
+            age = DateTime.Now.Year - BirthDay.Year;
         }
     }
 
