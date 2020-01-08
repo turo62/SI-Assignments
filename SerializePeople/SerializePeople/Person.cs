@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Runtime.Serialization;
+using System.Runtime.Serialization.Formatters.Binary;
+using System.IO;
 
 namespace SerializePeople
 {
@@ -44,6 +46,40 @@ namespace SerializePeople
         {
             string stringifyGender = Gender.ToString();
             return "Name: " + Name      + ", gender: " + stringifyGender;
+        }
+
+        public void Serialize(string output)
+        {
+            try
+            {
+                IFormatter formatter = new BinaryFormatter();
+                Stream stream = new FileStream(output, FileMode.Create, FileAccess.Write);
+
+                formatter.Serialize(stream, this);
+                stream.Close();
+            }
+            catch (UnauthorizedAccessException e)
+            {
+                Console.WriteLine(e.Message);
+                Console.WriteLine("Access to {0} is denied. ", output);
+            }            
+        }
+
+        public static Person Deserialize(string input)
+        {
+            Person objnew = new Person();
+            IFormatter formatter = new BinaryFormatter();
+            Stream stream = new FileStream(input, FileMode.Open, FileAccess.Read);
+            objnew = (Person)formatter.Deserialize(stream);
+
+            /*Console.WriteLine(objnew.Name);
+            Console.WriteLine(objnew.BirthDay);
+            Console.WriteLine(objnew.Gender);
+            Console.WriteLine(objnew.age);
+
+            Console.ReadKey();*/
+
+            return objnew;  
         }
     }
 

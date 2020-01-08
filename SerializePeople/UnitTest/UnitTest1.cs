@@ -1,6 +1,7 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using SerializePeople;
 using System;
+using System.IO;
 using System.Text.RegularExpressions;
 
 namespace UnitTest
@@ -24,6 +25,25 @@ namespace UnitTest
         public void TestToStringMethod()
         {
             Assert.IsTrue(Regex.IsMatch(testP1.ToString(), @"Name: Laci, gender: MALE"));
+        }
+
+        [TestMethod]
+        public void TestSerializeMethod()
+        {
+            testP1.Serialize(@"testSer.txt");
+            Assert.IsTrue(File.Exists(@"testSer.txt"));
+
+            File.Delete(@"testSer.txt");
+        }
+
+        [TestMethod]
+        public void TestDeserializeMethod()
+        {
+            testP1.Serialize(@"testSer2.txt");
+            Person deserializedP = Person.Deserialize(@"testSer.txt");
+            Assert.IsTrue(deserializedP.Name == testP1.Name);
+
+            File.Delete(@"testSer2.txt");
         }
     }
 }
