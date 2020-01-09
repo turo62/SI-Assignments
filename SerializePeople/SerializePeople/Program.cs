@@ -10,6 +10,7 @@ namespace SerializePeople
             //Console.WriteLine(newP);
             newP.Serialize(@"actperson.bin");
             Person.Deserialize(@"actperson.bin");
+            //Console.WriteLine(Person.Deserialize(@"actperson.bin"));
         }
     }
 }

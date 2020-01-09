@@ -4,12 +4,13 @@ using System.Text;
 using System.Runtime.Serialization;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.IO;
+using System.Security.Permissions;
 
 namespace SerializePeople
 {
 
     [Serializable]
-    public class Person : IDeserializationCallback
+    public class Person : IDeserializationCallback, ISerializable
     {
         public string Name { get; set; }
 
@@ -34,6 +35,16 @@ namespace SerializePeople
         }
 
         public Person() { }
+        
+        public Person(SerializationInfo info, StreamingContext context)
+        {
+            if (info == null)
+                throw new System.ArgumentNullException("info");
+            Name = (string)info.GetValue("Name", typeof(string));
+            BirthDay = (DateTime)info.GetValue("BirthDay", typeof(DateTime));
+            Gender = (Genders)info.GetValue("Gender", typeof(Genders));
+            age = DateTime.Now.Year - BirthDay.Year;
+        }
 
         public Person(string myName, DateTime birthDay, Genders gender)
         {
@@ -87,6 +98,20 @@ namespace SerializePeople
         void IDeserializationCallback.OnDeserialization(Object sender)
         {
             age = DateTime.Now.Year - BirthDay.Year;
+        }
+
+        [SecurityPermission(SecurityAction.LinkDemand,
+            Flags = SecurityPermissionFlag.SerializationFormatter)]
+        public virtual void GetObjectData(SerializationInfo info, StreamingContext context)
+        {
+            if (info == null)
+            {
+                throw new System.ArgumentNullException("info");
+            }
+
+            info.AddValue("Name", this.Name);
+            info.AddValue("Gender", this.Gender);
+            info.AddValue("BirthDay", this.BirthDay);
         }
     }
 
