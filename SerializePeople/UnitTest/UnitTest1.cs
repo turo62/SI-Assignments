@@ -24,7 +24,12 @@ namespace UnitTest
         [TestMethod]
         public void TestToStringMethod()
         {
-            Assert.IsTrue(Regex.IsMatch(testP1.ToString(), @"Name: Laci, gender: MALE"));
+            string expectedSt = "Name: Zoli, birthday: 1962. 07. 06. 0:00:00, gender: MALE,age: 58";
+            string result = testP1.ToString();
+
+            Assert.AreEqual(result, expectedSt);
+
+            //Assert.IsTrue(Regex.IsMatch(testP1.ToString(), @"Name: Laci, birthday: 1962. 07. 06. 0:00:00, gender: MALE,age: d{1, 2}"));
         }
 
         [TestMethod]
