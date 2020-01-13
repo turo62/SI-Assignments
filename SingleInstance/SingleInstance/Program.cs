@@ -5,10 +5,10 @@ namespace SingleInstance
 {
     class Program
     {
+        static string mutexName = "RUNMEONLYONCE";
         static void Main(string[] args)
         {
-            const string mutexName = "RUNMEONLYONCE";
-            System.Threading.Mutex mutex = null;
+            Mutex mutex = null;
             while (true)
             {
                 try
@@ -20,12 +20,17 @@ namespace SingleInstance
                 }
                 catch (WaitHandleCannotBeOpenedException)
                 {
-                    bool mutexIsMine = true;
-                    mutex = new Mutex(mutexIsMine, mutexName);
-                    Console.WriteLine("Mutex not found, created.");
+                    mutex = CreateNewM();
                 }
             }
             Console.ReadKey();
+        }
+
+        static Mutex CreateNewM()
+        {
+            bool mine = true;
+            Console.WriteLine("Mutex not found, created.");
+            return new Mutex(mine, mutexName);
         }
     }
 }
